@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mutqi Ar Ridho — Portfolio</title>
+<meta name="description" content="Muhammad Mutqi Ar Ridho — store manager at EIGER who builds data dashboards and web tools on the side.">
+<meta name="theme-color" content="#2236FF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mutqi Ar Ridho — Store Manager &amp; Web Developer">
+<meta property="og:description" content="Running an EIGER store by day. Building dashboards &amp; web tools after hours.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2236FF;
+  --blue-ink:#1A2BE0;
+  --bg:#FFFFFF;
+  --ink:#0B0B12;
+  --muted:#5A5A66;
+  --line:#0B0B12;
+  --pill:#FFFFFF;
+  --pill-ink:#0B0B12;
+  --sans:'Archivo',system-ui,sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --gutter:clamp(16px,5vw,64px);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;transition:background .4s,color .4s;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--gutter)}
+
+/* ---------- NAV ---------- */
+.nav{position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:32px var(--gutter)}
+.logo{font-weight:900;font-stretch:110%;font-size:22px;letter-spacing:-.02em}
+.logo b{color:var(--blue)}
+.burger{display:inline-flex;align-items:center;gap:14px;height:44px;padding:0;background:none;border:0;cursor:pointer;color:var(--ink);font:700 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+.burger .lines{display:grid;gap:9px;justify-items:end}
+.burger i{display:block;width:36px;height:1.5px;background:currentColor;transition:transform .3s,width .3s}
+.burger:hover i:last-child{width:22px}
+.menu-open .burger{color:#fff}
+.menu-open .burger i{width:36px!important}
+.menu-open .burger i:first-child{transform:translateY(5.25px) rotate(45deg)}
+.menu-open .burger i:last-child{transform:translateY(-5.25px) rotate(-45deg)}
+/* handwritten hint that points at the menu on first view */
+.menu-hint{position:absolute;top:76px;right:calc(var(--gutter) + 10px);display:flex;align-items:flex-end;gap:2px;color:var(--blue);font-family:var(--serif);font-style:italic;font-size:22px;line-height:1;pointer-events:none;transform:rotate(-5deg);transform-origin:right top;opacity:0;animation:hint-in .8s 1.2s cubic-bezier(.2,.8,.2,1) forwards;transition:opacity .4s,transform .4s}
+.menu-hint span{margin-bottom:-4px}
+.menu-hint svg{width:48px;height:42px;overflow:visible}
+.menu-hint path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.menu-hint .draw{stroke-dasharray:80;stroke-dashoffset:80;animation:hint-draw .7s 1.6s ease-out forwards}
+.menu-hint.gone{opacity:0!important;transform:rotate(-5deg) translateY(-8px);animation:none}
+.menu-open .menu-hint{opacity:0!important;animation:none}
+@keyframes hint-in{from{opacity:0;transform:rotate(-5deg) translateY(8px)}to{opacity:1;transform:rotate(-5deg)}}
+@keyframes hint-draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.menu-hint{animation:none;opacity:1}.menu-hint .draw{animation:none;stroke-dashoffset:0}}
+
+.menu{position:fixed;inset:0;z-index:15;background:var(--blue);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);clip-path:circle(0% at calc(100% - 60px) 56px);transition:clip-path .6s cubic-bezier(.7,0,.2,1)}
+.menu-open .menu{clip-path:circle(150% at calc(100% - 60px) 56px)}
+.menu-open .logo{color:#fff}.menu-open .logo b{color:#fff}
+.menu a{font-family:var(--serif);font-style:italic;font-size:clamp(56px,11vw,140px);line-height:1;display:block;width:max-content;transition:transform .3s}
+.menu a:hover{transform:translateX(16px)}
+.menu a:nth-child(even){font-family:var(--sans);font-style:normal;font-weight:900;font-stretch:110%;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(48px,9vw,120px)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden}
+.hero-stage{position:relative;height:clamp(560px,52vw,680px);display:flex;justify-content:center}
+.headline{position:absolute;left:0;right:0;top:clamp(20px,3vw,40px);text-align:center;z-index:1;pointer-events:none}
+.headline .serif-row{display:flex;justify-content:center;gap:clamp(110px,19vw,250px);font-family:var(--serif);font-style:italic;font-size:clamp(64px,10.5vw,148px);line-height:.95;letter-spacing:-.02em}
+.headline .big{display:block;font-weight:900;font-stretch:118%;color:var(--blue);font-size:clamp(68px,12.4vw,172px);line-height:.85;letter-spacing:-.045em;text-transform:uppercase;margin-top:clamp(0px,.6vw,8px)}
+.portrait{position:absolute;bottom:0;left:50%;transform:translateX(-50%);z-index:2;width:clamp(330px,36vw,470px);aspect-ratio:977/1135}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:bottom;transition:opacity .5s}
+
+.hero-foot{position:absolute;bottom:32px;left:0;right:0;z-index:3;display:flex;justify-content:space-between;align-items:flex-end;padding:0 var(--gutter);max-width:1280px;margin:0 auto}
+.spec{font-weight:700;font-size:12px;line-height:1.6;text-transform:uppercase;letter-spacing:.02em;max-width:230px}
+.spec::before{content:"";display:block;width:40px;height:1.5px;background:var(--ink);margin-bottom:18px}
+.blurb{font-size:13px;line-height:1.5;color:var(--muted);max-width:200px}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:99px;font:700 13px/1 var(--sans);letter-spacing:.04em;text-transform:uppercase;padding:18px 54px;cursor:pointer;border:0;transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 10px 30px -10px rgba(34,54,255,.7)}
+.btn-white{background:#fff;color:#0B0B12;padding:14px 30px;font-size:11px}
+.chat{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);z-index:4}
+.chat:hover{transform:translateX(-50%) translateY(-2px)}
+
+/* side role line in hero */
+.side-role{position:absolute;z-index:3;right:var(--gutter);top:calc(clamp(20px,3vw,40px) + clamp(64px,10.5vw,148px)*.95 + clamp(68px,12.4vw,172px)*.85 + 18px);text-align:right;font-family:var(--serif);font-style:italic;font-size:clamp(26px,3.2vw,46px);line-height:1}
+.side-role small{display:block;font-family:var(--sans);font-style:normal;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+
+/* ---------- DAY JOB ---------- */
+.dayjob{border-top:1.5px solid var(--line)}
+.dj-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.dj-head .big{display:block;font-weight:900;font-stretch:118%;color:var(--blue);font-size:clamp(52px,8.4vw,116px);line-height:.85;letter-spacing:-.045em;text-transform:uppercase}
+.dj-head .it{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(60px,9.6vw,132px);line-height:.85;letter-spacing:-.02em}
+.dj-head p{color:var(--muted);font-size:15px;line-height:1.6;max-width:440px}
+.dj-head .tag{display:inline-block;border:1.5px solid var(--blue);color:var(--blue);border-radius:99px;padding:6px 14px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px}
+.gallery{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:clamp(12px,2vw,24px);align-items:center}
+.gallery{padding:20px 0}
+.shot{position:relative}
+.polaroid{position:relative;background:#FBFAF6;padding:12px 12px 46px;border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.08),0 18px 40px -14px rgba(11,11,18,.35);transform:rotate(var(--rot,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.polaroid:hover{transform:rotate(0deg) translateY(-8px) scale(1.02);box-shadow:0 1px 2px rgba(0,0,0,.08),0 30px 60px -18px rgba(11,11,18,.45);z-index:2}
+.polaroid::before{content:"";position:absolute;top:-14px;left:50%;width:96px;height:28px;transform:translateX(-50%) rotate(var(--tape,-3deg));background:rgba(34,54,255,.12);backdrop-filter:blur(2px);border-left:1px dashed rgba(34,54,255,.25);border-right:1px dashed rgba(34,54,255,.25)}
+.polaroid .pic{overflow:hidden;border-radius:2px;background:#ddd}
+.polaroid img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.02)}
+.shot.tall .pic{aspect-ratio:3/4}
+.shot.wide .pic{aspect-ratio:4/3}
+.shot:nth-child(1) .polaroid{--rot:-4deg;--tape:4deg}
+.shot:nth-child(2) .polaroid{--rot:1.5deg;--tape:-2deg}
+.shot:nth-child(3) .polaroid{--rot:3.5deg;--tape:-5deg}
+.duties{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--line);margin-top:clamp(40px,5vw,64px)}
+.duties div{padding:20px 20px 0 0}
+.duties b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,34px);line-height:1;margin-bottom:8px}
+.duties span{font-size:13px;line-height:1.5;color:var(--muted)}
+
+.journey{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(40px,5vw,64px)}
+.journey>div{border:1.5px solid var(--line);border-radius:22px;padding:22px 24px}
+.journey>div:last-child{background:var(--blue);border-color:var(--blue);color:#fff}
+.journey small{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-bottom:10px}
+.journey b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.2vw,30px);line-height:1.05;margin-bottom:6px}
+.journey span{font-size:13px;opacity:.75;line-height:1.5}
+
+.polaroid{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:60;background:rgba(10,10,24,.28);backdrop-filter:blur(14px) saturate(1.1);-webkit-backdrop-filter:blur(14px) saturate(1.1);opacity:0;pointer-events:none;transition:opacity .5s ease}
+.lb.on{opacity:1;pointer-events:auto;cursor:zoom-out}
+.lb-card,.lb-card:hover{position:fixed!important;margin:0;z-index:61!important;cursor:zoom-out;transition:none!important;transform-origin:50% 50%}
+.lb-card::before{width:calc(96px*var(--k,1));height:calc(28px*var(--k,1));top:calc(-14px*var(--k,1))}
+.lb-card:hover{box-shadow:0 1px 2px rgba(0,0,0,.08),0 18px 40px -14px rgba(11,11,18,.35)}
+.lb-card .pic{height:auto}
+html.lb-open{overflow:hidden}
+
+/* ---------- SERVICES ---------- */
+.services{background:var(--blue);color:#fff;position:relative;overflow:hidden}
+.services .wrap{padding-top:clamp(64px,8vw,110px)}
+.svc-head{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.svc-title .big{display:block;font-weight:900;font-stretch:115%;font-size:clamp(54px,8.4vw,116px);line-height:.85;letter-spacing:-.045em;text-transform:uppercase}
+.svc-title .it{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(64px,9.6vw,132px);line-height:.85;letter-spacing:-.02em}
+.svc-side{max-width:240px;padding-top:14px}
+.svc-side p{font-size:13px;line-height:1.5;opacity:.9;margin-bottom:22px}
+.pit-space{height:clamp(360px,32vw,420px);margin-top:20px}
+.pit{position:absolute;inset:0;z-index:2;pointer-events:none}
+.pill{position:absolute;display:grid;place-items:center;background:var(--pill);color:var(--pill-ink);border-radius:999px;font-family:var(--serif);font-size:clamp(22px,2.5vw,34px);white-space:nowrap;padding:.5em 1.4em;cursor:grab;user-select:none;-webkit-user-select:none;will-change:transform}
+.pill{pointer-events:auto;touch-action:none}
+.pill.grabbed{cursor:grabbing;box-shadow:0 24px 40px -12px rgba(0,0,0,.45)}
+.svc-side .hint{margin:18px 0 0;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+
+/* ---------- WORK ---------- */
+.section{padding:clamp(80px,10vw,140px) 0}
+.sec-title{text-align:center;margin-bottom:clamp(40px,6vw,72px)}
+.sec-title .big{font-weight:900;font-stretch:118%;color:var(--blue);font-size:clamp(52px,9vw,124px);line-height:.85;letter-spacing:-.045em;text-transform:uppercase}
+.sec-title .it{font-family:var(--serif);font-style:italic;font-size:clamp(60px,10vw,140px);line-height:.85;letter-spacing:-.02em}
+.sec-title p{margin:22px auto 0;max-width:460px;color:var(--muted);font-size:15px;line-height:1.55}
+.work{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(24px,4vw,56px);align-items:end}
+.work-media{border-radius:24px;overflow:hidden;background:#111;box-shadow:0 30px 60px -30px rgba(34,54,255,.6);aspect-ratio:1280/576}
+.work-media video{width:100%;height:100%;object-fit:cover}
+.work + .work{margin-top:clamp(72px,9vw,120px)}
+.work.flip{grid-template-columns:1fr 1.6fr}
+.work.flip .work-media{order:2}
+.work-media.kpi{aspect-ratio:1280/608}
+.work-meta .tag{display:inline-block;border:1.5px solid var(--blue);color:var(--blue);border-radius:99px;padding:6px 14px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:0 6px 8px 0}
+.work-meta h3{font-weight:900;font-stretch:112%;font-size:clamp(30px,3.4vw,46px);line-height:.95;letter-spacing:-.03em;text-transform:uppercase;margin:18px 0 6px}
+.work-meta h3 em{display:block;font-family:var(--serif);font-weight:400;text-transform:none;letter-spacing:-.01em;color:var(--blue);font-size:1.15em}
+.work-meta p{color:var(--muted);line-height:1.6;font-size:15px;margin:14px 0 26px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1.5px solid var(--line)}
+.facts div{padding:16px 0}
+.facts b{display:block;font-family:var(--serif);font-size:36px;font-weight:400;line-height:1}
+.facts span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+
+
+/* ---------- CONTACT ---------- */
+.contact{background:var(--blue);color:#fff;text-align:center;padding:clamp(90px,12vw,160px) 0 40px}
+.contact .it{font-family:var(--serif);font-style:italic;font-size:clamp(56px,9vw,128px);line-height:.85}
+.contact .big{display:block;font-weight:900;font-stretch:118%;font-size:clamp(60px,12vw,180px);line-height:.85;letter-spacing:-.05em;text-transform:uppercase}
+.contact-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:44px}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid #fff;padding:14px 30px;font-size:11px}
+.btn-outline-w:hover{background:#fff;color:var(--blue)}
+.socials{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:28px}
+.socials a{border:1.5px solid rgba(255,255,255,.6);border-radius:99px;padding:10px 20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,color .2s}
+.socials a:hover{background:#fff;color:var(--blue)}
+.foot{display:flex;justify-content:space-between;margin-top:clamp(80px,10vw,130px);font-size:12px;opacity:.8;padding:0 var(--gutter)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  .work,.work.flip{grid-template-columns:1fr}
+  .work.flip .work-media{order:0}
+  .blurb{display:none}
+}
+@media (max-width:640px){
+  .nav{padding:20px var(--gutter)}
+  .menu-hint{display:none}
+  .burger{gap:10px;font-size:11px}
+  .hero-stage{height:auto;min-height:0;flex-direction:column;align-items:center}
+  .headline{position:relative;top:0;margin-top:12px}
+  .headline .serif-row{gap:14px}
+  .headline .big{font-size:12.6vw;letter-spacing:-.05em}
+  .chat,.chat:hover{position:relative;left:auto;bottom:auto;transform:none;padding:16px 36px;margin-top:18px;order:3}
+  .portrait{position:relative;left:auto;transform:none;width:min(88vw,380px);margin-top:-16vw}
+  .chat{bottom:20px}
+  .hero-foot{position:relative;bottom:auto;padding:28px var(--gutter) 36px;background:var(--bg)}
+  .spec{max-width:none}
+  .side-role{position:relative;top:auto;right:auto;text-align:center;margin-top:10px;order:2}
+  .dj-head{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .gallery .shot.wide{grid-column:1/-1;order:-1}
+  .gallery{gap:22px 14px}
+  .polaroid{padding:8px 8px 30px}
+    .svc-title .big{font-size:13vw}
+  .svc-title .it{font-size:14vw}
+  .duties{grid-template-columns:1fr 1fr}
+  .journey{grid-template-columns:1fr}
+  .pit-space{display:none}
+  .pit{position:relative;inset:auto;pointer-events:auto;display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;padding:0 var(--gutter) 60px}
+  .pill{touch-action:auto}
+  .pill{position:static;transform:none!important;font-size:20px;cursor:default}
+  .hint{display:none}
+  .facts b{font-size:28px}
+  .foot{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap nav">
+  <a href="#top" class="logo">MUTQI<b>.</b></a>
+  <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false"><span class="burger-label">Menu</span><span class="lines"><i></i><i></i></span></button>
+  <div class="menu-hint" id="menuHint" aria-hidden="true"><span>psst, more here</span><svg viewBox="0 0 48 42"><path class="draw" d="M2 38 C 18 37, 34 28, 42 6"/><path class="draw" d="M34 10 L42 5 L45 14"/></svg></div>
+</header>
+
+<nav class="menu" id="menu" aria-hidden="true">
+  <a href="#dayjob">Day job</a>
+  <a href="#services">Services</a>
+  <a href="#work">Work</a>
+  <a href="#contact">Contact</a>
+  <a href="assets/CV-Muhammad-Mutqi-Ar-Ridho.pdf" download>Resume</a>
+</nav>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-stage">
+      <h1 class="headline">
+        <span class="serif-row"><span>I’m a</span><span>store</span></span>
+        <span class="big">Manager</span>
+      </h1>
+      <div class="portrait">
+        <img src="assets/me-color.png" alt="Portrait of Mutqi">
+      </div>
+      <p class="side-role"><small>On the side</small>&amp; web developer</p>
+      <a href="#contact" class="btn btn-blue chat">Let’s chat</a>
+    </div>
+    <div class="hero-foot">
+      <p class="spec">Running an EIGER store by day. Building dashboards &amp; web tools after hours.</p>
+      <p class="blurb">I look after people, numbers and the shop floor, and build tools that help all three.</p>
+    </div>
+  </section>
+
+  <!-- DAY JOB -->
+  <section class="section dayjob" id="dayjob">
+    <div class="wrap">
+      <div class="dj-head">
+        <h2 class="reveal"><span class="big">Day job</span><span class="it">store manager</span></h2>
+        <div class="reveal">
+          <span class="tag">PT Eigerindo MPI</span>
+          <p>Most of my day happens on the shop floor: keeping the crew sharp, chasing targets, and watching the numbers that show how the store is really doing. I like making calls backed by data, so when the tools I needed didn’t exist, I started building them myself.</p>
+        </div>
+      </div>
+      <div class="gallery">
+        <figure class="shot tall reveal"><div class="polaroid"><div class="pic"><img src="assets/store-1.jpg" data-full="assets/store-1-hd.jpg" alt="Handing a shopping bag to a customer in front of the store" loading="lazy"></div></div></figure>
+        <figure class="shot wide reveal"><div class="polaroid"><div class="pic"><img src="assets/store-2.jpg" data-full="assets/store-2-hd.jpg" alt="Selfie with the store team inside the shop" loading="lazy"></div></div></figure>
+        <figure class="shot tall reveal"><div class="polaroid"><div class="pic"><img src="assets/store-3.jpg" data-full="assets/store-3-hd.jpg" alt="Standing with a partner in front of the store entrance" loading="lazy"></div></div></figure>
+      </div>
+      <div class="duties">
+        <div class="reveal"><b>Team</b><span>Coaching the crew and growing the next leaders.</span></div>
+        <div class="reveal"><b>Sales</b><span>Turning daily targets into real results.</span></div>
+        <div class="reveal"><b>KPIs</b><span>Reading the numbers before making the call.</span></div>
+        <div class="reveal"><b>Procurement</b><span>Keeping orders and paperwork on track.</span></div>
+      </div>
+      <div class="journey">
+        <div class="reveal"><small>2021 – 2025</small><b>Universitas Pasundan</b><span>Studied International Relations</span></div>
+        <div class="reveal"><small>Management Trainee</small><b>PT Eigerindo MPI</b><span>Finished as the top group of my trainee batch</span></div>
+        <div class="reveal"><small>Nov 2025 – Now</small><b>Head of Retail Operation</b><span>Running the store and its team as Store Manager</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="svc-head">
+        <h2 class="svc-title reveal"><span class="big">Side job</span><span class="it">your digital needs</span></h2>
+        <div class="svc-side reveal">
+          <p>Dashboards, reports and web tools from someone who actually uses them on the shop floor.</p>
+          <a href="#contact" class="btn btn-white">Get in touch</a>
+          <p class="hint">Grab, throw &amp; poke the pills</p>
+        </div>
+      </div>
+    </div>
+    <div class="pit-space" aria-hidden="true"></div>
+    <div class="pit" id="pit" aria-label="Services">
+      <span class="pill" data-x=".05" data-y=".50" data-r="-12">Dashboards</span>
+      <span class="pill" data-x=".26" data-y=".38" data-r="-3">KPI</span>
+      <span class="pill" data-x=".45" data-y=".22" data-r="-11">Excel</span>
+      <span class="pill" data-x=".57" data-y=".52" data-r="15">Data Analysis</span>
+      <span class="pill" data-x=".24" data-y=".64" data-r="13">Leading</span>
+      <span class="pill" data-x=".45" data-y=".60" data-r="0">Coaching</span>
+      <span class="pill" data-x=".06" data-y=".93" data-r="0">Sales</span>
+      <span class="pill" data-x=".40" data-y=".93" data-r="0">Websites</span>
+      <span class="pill" data-x=".67" data-y=".93" data-r="0">Automation</span>
+      <span class="pill" data-x=".82" data-y=".60" data-r="-8">Retail</span>
+      <span class="pill" data-x=".88" data-y=".30" data-r="10">AI</span>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="sec-title reveal">
+        <div class="big">Selected</div>
+        <div class="it">work</div>
+      </div>
+      <article class="work">
+        <div class="work-media kpi reveal">
+          <video src="assets/kpi-tools.mp4" poster="assets/kpi-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of the EIGER store map, 3D store model and KPI page"></video>
+        </div>
+        <div class="work-meta reveal">
+          <span class="tag">Map</span><span class="tag">3D</span><span class="tag">KPI</span>
+          <h3>Peta EIGER <em>KPI Tools</em></h3>
+          <p>Every EIGER store on one map, each dot coloured by how close it is to target. Tap a store to jump into a 3D view of it, then dig into its 10 KPIs and monthly sales.</p>
+          <div class="facts">
+            <div><b>477</b><span>Stores</span></div>
+            <div><b>10</b><span>KPIs</span></div>
+            <div><b>3D</b><span>Store view</span></div>
+          </div>
+        </div>
+      </article>
+      <article class="work flip">
+        <div class="work-media reveal">
+          <video src="assets/eiger-dashboard.mp4" poster="assets/eiger-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of the EIGER dashboard"></video>
+        </div>
+        <div class="work-meta reveal">
+          <span class="tag">Dashboard</span><span class="tag">Data</span><span class="tag">Web</span>
+          <h3>EIGER <em>Product Performance</em></h3>
+          <p>My own store’s command centre: one place to watch sales, dig into every product and decide what to do next.</p>
+          <div class="facts">
+            <div><b>9</b><span>Modules</span></div>
+            <div><b>AI</b><span>Ask the data</span></div>
+            <div><b>2026</b><span>Built</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap reveal">
+      <div class="it">Have a project?</div>
+      <span class="big">Let’s talk</span>
+      <div class="contact-actions">
+        <a href="mailto:mutqiarridho01@gmail.com" class="btn btn-white">Send an email</a>
+        <a href="assets/CV-Muhammad-Mutqi-Ar-Ridho.pdf" download class="btn btn-outline-w">Download CV ↓</a>
+      </div>
+      <div class="socials">
+        <a href="https://instagram.com/moetqiarridho" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/mutqiarridho" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/6285524796314" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot"><span>© <span id="yr"></span> Muhammad Mutqi Ar Ridho, S.IP</span></div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script>
+(() => {
+  const root = document.documentElement;
+
+
+  // menu
+  const burger = document.getElementById('burger'), menu = document.getElementById('menu');
+  const setMenu = open => {
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open); menu.setAttribute('aria-hidden', !open);
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    burger.querySelector('.burger-label').textContent = open ? 'Close' : 'Menu';
+    syncHint();
+  };
+  const hint = document.getElementById('menuHint');
+  // the note shows whenever you're back at the top with the menu closed
+  function syncHint() { hint && hint.classList.toggle('gone', scrollY > 60 || document.body.classList.contains('menu-open')); }
+  addEventListener('scroll', syncHint, { passive: true });
+  burger.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // photo viewer: click a polaroid -> it flips to the centre, everything else blurs
+  const lb = document.createElement('div');
+  lb.className = 'lb';
+  document.body.appendChild(lb);
+  let open = null;
+
+  function openShot(card) {
+    if (open) return;
+    const r = card.getBoundingClientRect();
+    const w = card.offsetWidth, h = card.offsetHeight;
+    const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    const cs = getComputedStyle(card);
+    const rot = cs.getPropertyValue('--rot').trim() || '0deg';
+    const pad = ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft'].map(k => parseFloat(cs[k]));
+    const picH = card.querySelector('.pic').offsetHeight;
+
+    // Build the card at its final, large size so the photo renders sharp,
+    // then animate it *down* from the thumbnail position (no upscaled pixels).
+    const k = Math.min(innerWidth * .9 / w, innerHeight * .84 / h, 3);
+    const clone = card.cloneNode(true);
+    clone.classList.add('lb-card');
+    clone.style.setProperty('--k', k);
+    Object.assign(clone.style, {
+      width: w * k + 'px', height: h * k + 'px',
+      left: innerWidth / 2 - w * k / 2 + 'px', top: innerHeight / 2 - h * k / 2 + 'px',
+      padding: pad.map(v => v * k + 'px').join(' '), borderRadius: 6 * k + 'px'
+    });
+    clone.querySelector('.pic').style.height = picH * k + 'px';
+    const img = clone.querySelector('img'), full = card.querySelector('img').dataset.full;
+    if (full) { const hd = new Image(); hd.src = full; hd.decode().then(() => { img.src = full; }).catch(() => {}); }
+    document.body.appendChild(clone);
+    card.style.visibility = 'hidden';
+
+    const dx = cx - innerWidth / 2, dy = cy - innerHeight / 2;
+    const from = `perspective(${1600 * k}px) translate(${dx}px,${dy}px) rotate(${rot}) rotateY(0deg) scale(${1 / k})`;
+    const to = `perspective(${1600 * k}px) translate(0px,0px) rotate(0deg) rotateY(360deg) scale(1)`;
+    const anim = clone.animate([{ transform: from }, { transform: to }],
+      { duration: reduce ? 1 : 750, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
+    document.documentElement.classList.add('lb-open');
+    lb.classList.add('on');
+    open = { card, clone, anim, from, to };
+    // once it lands, drop the 3D transform so the photo is drawn as a plain, crisp 2D image
+    anim.finished.then(() => { if (open && open.clone === clone && !open.closing) { clone.style.transform = 'none'; anim.cancel(); } });
+  }
+
+  function closeShot() {
+    if (!open || open.closing) return;
+    open.closing = true;
+    const { card, clone, from, to } = open;
+    lb.classList.remove('on');
+    clone.animate([{ transform: to }, { transform: from }],
+      { duration: reduce ? 1 : 600, easing: 'cubic-bezier(.5,0,.2,1)', fill: 'forwards' })
+      .finished.then(() => {
+        card.style.visibility = ''; clone.remove();
+        document.documentElement.classList.remove('lb-open');
+        open = null;
+      });
+  }
+
+  document.querySelectorAll('.gallery .polaroid').forEach(card => {
+    card.tabIndex = 0;
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', 'Open photo');
+    card.addEventListener('click', () => openShot(card));
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openShot(card); } });
+  });
+  lb.addEventListener('click', closeShot);
+  document.addEventListener('click', e => { if (open && e.target.closest('.lb-card')) closeShot(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeShot(); });
+  let lbW = innerWidth;
+  addEventListener('resize', () => { if (innerWidth !== lbW) { lbW = innerWidth; closeShot(); } });
+
+  // pills: gravity physics (Matter.js). The whole blue section is the box: pills rain in,
+  // pile up on the floor, hop gently when poked, and can be grabbed and thrown.
+  const pit = document.getElementById('pit');
+  const space = pit.previousElementSibling;
+  const pills = [...pit.querySelectorAll('.pill')];
+  const mobile = matchMedia('(max-width:640px)');
+  let engine, runner, raf, timers = [], started = false;
+
+  function placeStatic() {           // no physics: lay the pile out from data-x / data-y
+    const W = pit.clientWidth, H = pit.clientHeight, P = space.offsetHeight;
+    pills.forEach(p => {
+      const x = Math.min(24 + +p.dataset.x * (W - 48), W - p.offsetWidth - 24);
+      const y = H - P + +p.dataset.y * P - p.offsetHeight / 2;
+      p.style.transform = `translate(${x}px,${Math.min(y, H - p.offsetHeight)}px) rotate(${p.dataset.r}deg)`;
+    });
+  }
+
+  function stop() {
+    timers.forEach(clearTimeout); timers = [];
+    if (!engine) return;
+    cancelAnimationFrame(raf); Matter.Runner.stop(runner); Matter.Engine.clear(engine);
+    engine = null;
+  }
+
+  function start(drop) {
+    stop();
+    const { Engine, Runner, Bodies, Body, Composite, Constraint, Events, Vector } = Matter;
+    const W = pit.clientWidth, H = pit.clientHeight, P = space.offsetHeight, T = 400;
+    engine = Engine.create({ gravity: { y: 1 } });
+    const wall = { isStatic: true, friction: .4, restitution: .3 };
+    Composite.add(engine.world, [
+      Bodies.rectangle(W / 2, H + T / 2, W + 2 * T, T, wall),   // floor
+      Bodies.rectangle(W / 2, -T / 2, W + 2 * T, T, wall),      // ceiling = top of the section
+      Bodies.rectangle(-T / 2, H / 2, T, H + 2 * T, wall),      // left
+      Bodies.rectangle(W + T / 2, H / 2, T, H + 2 * T, wall),   // right
+    ]);
+
+    const map = new Map();
+    const make = (p, x, y) => {
+      const w = p.offsetWidth, h = p.offsetHeight;
+      const body = Bodies.rectangle(x, y, w, h, {
+        chamfer: { radius: h / 2 - 1 }, restitution: .3, friction: .5, frictionAir: .02, density: .002,
+        angle: (+p.dataset.r) * Math.PI / 180
+      });
+      map.set(p, body); Composite.add(engine.world, body);
+    };
+    pills.forEach((p, i) => {
+      const w = p.offsetWidth, h = p.offsetHeight;
+      const x = Math.min(Math.max(24 + +p.dataset.x * (W - 48) + w / 2, w / 2 + 4), W - w / 2 - 4);
+      if (drop) {
+        p.style.transform = 'translate(-9999px,0)';              // hidden until it drops in
+        timers.push(setTimeout(() => engine && make(p, x, h / 2 + 4), i * 140));
+      } else {
+        make(p, x, H - P + +p.dataset.y * P);
+      }
+    });
+
+    let drag = null, z = 10;
+
+    // keep pills readable (never flipped or on end) and cap speed so a hard throw can't tunnel through a wall
+    const MAX = .6;
+    Events.on(engine, 'afterUpdate', () => map.forEach(b => {
+      if (b.angle > MAX || b.angle < -MAX) {
+        Body.setAngle(b, Math.max(-MAX, Math.min(MAX, b.angle)));
+        Body.setAngularVelocity(b, -b.angularVelocity * .3);
+      }
+      const v = b.velocity, sp = Math.hypot(v.x, v.y);
+      if (sp > 28) Body.setVelocity(b, { x: v.x / sp * 28, y: v.y / sp * 28 });
+    }));
+
+    // poke: a small hop, only when the pill is resting and wasn't poked a moment ago
+    const lastPoke = new Map();
+    pills.forEach(p => {
+      p.onpointerenter = e => {
+        const b = map.get(p); if (!b || drag || e.buttons) return;
+        const now = performance.now();
+        if (now - (lastPoke.get(p) || 0) < 700 || b.speed > 1.2) return;
+        lastPoke.set(p, now);
+        Body.setVelocity(b, { x: b.velocity.x + (Math.random() - .5) * 1.6, y: -4.2 - Math.random() * 1.2 });
+        Body.setAngularVelocity(b, (Math.random() - .5) * .06);
+      };
+    });
+
+    // grab & throw: a spring between the pointer and the spot you grabbed
+    const local = e => { const r = pit.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+    pills.forEach(p => {
+      p.onpointerdown = e => {
+        const b = map.get(p); if (!b || e.button > 0) return;
+        e.preventDefault();
+        try { p.setPointerCapture(e.pointerId); } catch (_) {}
+        const pt = local(e);
+        const off = Vector.rotate({ x: pt.x - b.position.x, y: pt.y - b.position.y }, -b.angle);
+        const c = Constraint.create({ pointA: pt, bodyB: b, pointB: Vector.rotate(off, b.angle), stiffness: .12, damping: .1, length: 0 });
+        Composite.add(engine.world, c);
+        drag = { p, c, off, b };
+        p.classList.add('grabbed'); p.style.zIndex = ++z;
+      };
+      p.onpointermove = e => { if (drag && drag.p === p) drag.c.pointA = local(e); };
+      const release = () => {
+        if (!drag || drag.p !== p) return;
+        Composite.remove(engine.world, drag.c);
+        p.classList.remove('grabbed'); drag = null;
+      };
+      p.onpointerup = release; p.onpointercancel = release; p.onlostpointercapture = release;
+    });
+    // keep the grab point on the same spot of the pill as it rotates
+    Events.on(engine, 'beforeUpdate', () => { if (drag) drag.c.pointB = Vector.rotate(drag.off, drag.b.angle); });
+
+    runner = Runner.create();
+    Runner.run(runner, engine);
+    const draw = () => {
+      map.forEach((b, p) => {
+        p.style.transform = `translate(${b.position.x - p.offsetWidth / 2}px,${b.position.y - p.offsetHeight / 2}px) rotate(${b.angle}rad)`;
+      });
+      raf = requestAnimationFrame(draw);
+    };
+    draw();
+  }
+
+  function init() {
+    if (mobile.matches) { stop(); pills.forEach(p => p.style.transform = ''); return; }
+    if (reduce || !window.Matter || !started) { stop(); placeStatic(); return; }
+    start(false);
+  }
+
+  // drop the pills in when the section first comes into view
+  const pitIO = new IntersectionObserver(es => {
+    if (!es[0].isIntersecting || started || mobile.matches || reduce || !window.Matter) return;
+    started = true; start(true); pitIO.disconnect();
+  }, { threshold: .3 });
+  pitIO.observe(space);
+
+  let rt, lastW = innerWidth;
+  addEventListener('resize', () => {
+    if (innerWidth === lastW) return;        // ignore mobile address-bar height changes
+    lastW = innerWidth; clearTimeout(rt); rt = setTimeout(init, 200);
+  });
+  document.fonts.ready.then(init);
+})();
+</script>
+</body>
+</html>
